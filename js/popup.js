@@ -1,48 +1,60 @@
 document.addEventListener('DOMContentLoaded', function () {
-    textChatBlurHandler()
     initializeStorage()
+    handleBlur("text-chat", "._ak8j", "textChat")
+    handleBlur("contact-name", "._ak8q", "contact")
 });
 
 function initializeStorage() {
     var toggle_text = document.getElementById("text-chat");
+    var contact_name = document.getElementById("contact-name");
 
     chrome.storage.sync.get('textChat', function (data) {
-        toggle_text.checked = data.textChat;
+        toggle_text.checked = JSON.parse(data.textChat).val;
+    });
+
+    chrome.storage.sync.get('contact', function (data) {
+        contact_name.checked = JSON.parse(data.contact).val;
     });
 }
 
-function textChatBlurHandler() {
-    var toggle = document.getElementById("text-chat");
+function handleBlur(switchId, targetClass, key) {
+    var toggle = document.getElementById(switchId);
 
-    toggle.addEventListener('change', function () {
-        chrome.storage.sync.set({ textChat: this.checked });
+    toggle.addEventListener('change', function (e) {
 
-        chrome.storage.sync.get('textChat', function (data) {
-            this.checked = data.textChat;
+        testPrefs = JSON.stringify({
+            'val': this.checked,
         });
+        var jsonfile = {};
+        jsonfile[key] = testPrefs;
+        chrome.storage.sync.set(jsonfile);
 
         if (this.checked) {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                chrome.scripting.executeScript({
-                    target: { tabId: tabs[0].id },
-                    function: () => {
-                        var _ak8j = document.body.querySelector('._ak8j');
+                function executeFunction(targetClass) {
+                    var targetComponent = document.body.querySelector(targetClass);
 
-                        _ak8j.style.filter = 'blur(10px)';
-                    }
+                    targetComponent.style.filter = 'blur(10px)';
+                }
+                chrome.scripting.executeScript({
+                    args: [targetClass],
+                    target: { tabId: tabs[0].id },
+                    function: executeFunction,
                 });
             });
         } else {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                chrome.scripting.executeScript({
-                    target: { tabId: tabs[0].id },
-                    function: () => {
-                        var _ak8j = document.body.querySelector('._ak8j');
+                function executeFunction(targetClass) {
+                    var targetComponent = document.body.querySelector(targetClass);
 
-                        _ak8j.style.filter = 'blur(0px)';
-                    }
+                    targetComponent.style.filter = 'blur(0px)';
+                }
+                chrome.scripting.executeScript({
+                    args: [targetClass],
+                    target: { tabId: tabs[0].id },
+                    function: executeFunction,
                 });
             });
         }
-    });
+    })
 }
