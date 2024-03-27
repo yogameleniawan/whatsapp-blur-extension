@@ -1,11 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
     textChatBlurHandler()
+    initializeStorage()
 });
 
-function textChatBlurHandler() {
+function initializeStorage() {
     var toggle_text = document.getElementById("text-chat");
 
-    toggle_text.addEventListener('change', function () {
+    chrome.storage.sync.get('textChat', function (data) {
+        toggle_text.checked = data.textChat;
+    });
+}
+
+function textChatBlurHandler() {
+    var toggle = document.getElementById("text-chat");
+
+    toggle.addEventListener('change', function () {
+        chrome.storage.sync.set({ textChat: this.checked });
+
+        chrome.storage.sync.get('textChat', function (data) {
+            this.checked = data.textChat;
+        });
+
         if (this.checked) {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 chrome.scripting.executeScript({
