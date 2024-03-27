@@ -44,33 +44,30 @@ function handleBlur(switchId, targetClass, key) {
 
         if (this.checked) {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                function executeFunction(targetClass) {
-                    var targetComponent = document.body.querySelectorAll(targetClass);
-
-                    for (let i = 0; i < targetComponent.length; i++) {
-                        targetComponent[i].style.filter = 'blur(10px)';
-                    }
-
-                }
-                chrome.scripting.executeScript({
-                    args: [targetClass],
+                chrome.scripting.insertCSS({
                     target: { tabId: tabs[0].id },
-                    function: executeFunction,
+                    css: `
+                    ${targetClass} {
+                        filter: blur(10px);
+                    } 
+                    ${targetClass}:hover {
+                        filter: blur(0px);
+                    }
+                    `
                 });
             });
         } else {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                function executeFunction(targetClass) {
-                    var targetComponent = document.body.querySelectorAll(targetClass);
-
-                    for (let i = 0; i < targetComponent.length; i++) {
-                        targetComponent[i].style.filter = 'blur(0px)';
-                    }
-                }
-                chrome.scripting.executeScript({
-                    args: [targetClass],
+                chrome.scripting.insertCSS({
                     target: { tabId: tabs[0].id },
-                    function: executeFunction,
+                    css: `
+                    ${targetClass} {
+                        filter: blur(0px);
+                    }
+                    ${targetClass}:hover {
+                        filter: blur(0px);
+                    }
+                    `
                 });
             });
         }
