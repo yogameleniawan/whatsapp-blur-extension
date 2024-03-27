@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Whatsapp Blur Privacy",
+    "version": "1.0",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_title": "Action Button",
+        "default_popup": "popup.html"
+    }
+}
