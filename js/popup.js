@@ -2,11 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeStorage()
     handleBlur("text-chat", "._ak8j", "textChat")
     handleBlur("contact-name", "._ak8q", "contact")
+    handleBlur("contact-name", "._ak8q", "contact")
+    handleBlur("profile-picture", "._ak8h", "profilePicture")
+    handleBlur("text-message", "._akbu", "textMessage")
 });
 
 function initializeStorage() {
     var toggle_text = document.getElementById("text-chat");
     var contact_name = document.getElementById("contact-name");
+    var profile_picture = document.getElementById("profile-picture");
+    var text_message = document.getElementById("text-message");
 
     chrome.storage.sync.get('textChat', function (data) {
         toggle_text.checked = JSON.parse(data.textChat).val;
@@ -14,6 +19,14 @@ function initializeStorage() {
 
     chrome.storage.sync.get('contact', function (data) {
         contact_name.checked = JSON.parse(data.contact).val;
+    });
+
+    chrome.storage.sync.get('profilePicture', function (data) {
+        profile_picture.checked = JSON.parse(data.profilePicture).val;
+    });
+
+    chrome.storage.sync.get('textMessage', function (data) {
+        text_message.checked = JSON.parse(data.textMessage).val;
     });
 }
 
