@@ -32,9 +32,12 @@ function handleBlur(switchId, targetClass, key) {
         if (this.checked) {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 function executeFunction(targetClass) {
-                    var targetComponent = document.body.querySelector(targetClass);
+                    var targetComponent = document.body.querySelectorAll(targetClass);
 
-                    targetComponent.style.filter = 'blur(10px)';
+                    for (let i = 0; i < targetComponent.length; i++) {
+                        targetComponent[i].style.filter = 'blur(10px)';
+                    }
+
                 }
                 chrome.scripting.executeScript({
                     args: [targetClass],
@@ -45,9 +48,11 @@ function handleBlur(switchId, targetClass, key) {
         } else {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 function executeFunction(targetClass) {
-                    var targetComponent = document.body.querySelector(targetClass);
+                    var targetComponent = document.body.querySelectorAll(targetClass);
 
-                    targetComponent.style.filter = 'blur(0px)';
+                    for (let i = 0; i < targetComponent.length; i++) {
+                        targetComponent[i].style.filter = 'blur(0px)';
+                    }
                 }
                 chrome.scripting.executeScript({
                     args: [targetClass],
