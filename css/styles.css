@@ -1,23 +1,16 @@
-._ak8j {
-  filter: blur(10px);
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
 }
 
-._ak8j:hover {
-  filter: blur(0px);
+.form-check-input:checked {
+  background-color: var(--bs-teal);
+  border-color: var(--bs-teal);
 }
 
-._ak8q {
-  filter: blur(10px);
-}
-
-._ak8q:hover {
-  filter: blur(0px);
-}
-
-._ak8h {
-  filter: blur(10px);
-}
-
-._ak8h:hover {
-  filter: blur(0px);
+.card-header {
+  background-color: var(--bs-teal);
+  color: white;
 }

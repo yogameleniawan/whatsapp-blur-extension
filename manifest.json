@@ -10,5 +10,21 @@
     "action": {
         "default_title": "Action Button",
         "default_popup": "popup.html"
+    },
+    "host_permissions": [
+        "*://web.whatsapp.com/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "popup.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "js/background.js"
     }
 }
