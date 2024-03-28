@@ -4,3 +4,13 @@ html,
 body {
   font-family: "Poppins", sans-serif;
 }
+
+.form-check-input:checked {
+  background-color: var(--bs-teal);
+  border-color: var(--bs-teal);
+}
+
+.card-header {
+  background-color: var(--bs-teal);
+  color: white;
+}

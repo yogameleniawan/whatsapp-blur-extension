@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var tab = tabs[0];
     if (tab.url.startsWith("https://web.whatsapp.com/")) {
-        document.getElementById("status").innerText = "Whatsapp Blur Privacy 1.0";
+        document.getElementById("status").innerText = "Whatsapp Blur Privacy";
     } else {
         document.getElementById("status").innerHTML = `
         <div class="alert alert-danger d-flex align-items-center" style="margin-top:10px"> 
@@ -49,6 +49,7 @@ function initializeStorage() {
         if (toggle_text.checked) {
             document.getElementById("text-chat-blur").style.display = "flex";
             document.getElementById("text-chat-range").value = JSON.parse(data.textChat).blur;
+            document.getElementById(`text-chat-range-value`).innerText = JSON.parse(data.textChat).blur;
         }
     });
 
@@ -57,6 +58,7 @@ function initializeStorage() {
         if (contact_name.checked) {
             document.getElementById("contact-name-blur").style.display = "flex";
             document.getElementById("contact-name-range").value = JSON.parse(data.contact).blur;
+            document.getElementById(`contact-name-range-value`).innerText = JSON.parse(data.contact).blur;
         }
     });
 
@@ -65,6 +67,7 @@ function initializeStorage() {
         if (profile_picture.checked) {
             document.getElementById("profile-picture-blur").style.display = "flex";
             document.getElementById("profile-picture-range").value = JSON.parse(data.profilePicture).blur;
+            document.getElementById(`profile-picture-range-value`).innerText = JSON.parse(data.profilePicture).blur;
         }
     });
 
@@ -73,6 +76,7 @@ function initializeStorage() {
         if (text_message.checked) {
             document.getElementById("text-message-blur").style.display = "flex";
             document.getElementById("text-message-range").value = JSON.parse(data.textMessage).blur;
+            document.getElementById(`text-message-range-value`).innerText = JSON.parse(data.textMessage).blur;
         }
     });
 
@@ -81,6 +85,7 @@ function initializeStorage() {
         if (image_message.checked) {
             document.getElementById("image-message-blur").style.display = "flex";
             document.getElementById("image-message-range").value = JSON.parse(data.imageMessage).blur;
+            document.getElementById(`image-message-range-value`).innerText = JSON.parse(data.imageMessage).blur;
         }
     });
 
@@ -89,6 +94,7 @@ function initializeStorage() {
         if (document_message.checked) {
             document.getElementById("document-message-blur").style.display = "flex";
             document.getElementById("document-message-range").value = JSON.parse(data.documentMessage).blur;
+            document.getElementById(`document-message-range-value`).innerText = JSON.parse(data.documentMessage).blur;
         }
     });
 }
@@ -96,12 +102,14 @@ function initializeStorage() {
 function handleBlur(switchId, targetClass, key) {
     var toggle = document.getElementById(switchId);
     var slider = document.getElementById(`${switchId}-range`);
+
     let blur = 5;
 
     toggle.addEventListener('change', function (e) {
         if (this.checked) {
-            document.getElementById(`${switchId}-blur`).style.display = "flex";
             blur = 5;
+            document.getElementById(`${switchId}-blur`).style.display = "flex";
+            document.getElementById(`${switchId}-range-value`).innerText = blur;
             chromeScripting()
         } else {
             document.getElementById(`${switchId}-blur`).style.display = "none";
@@ -132,6 +140,8 @@ function handleBlur(switchId, targetClass, key) {
 
             chrome.storage.sync.set(jsonfile);
         });
+
+        document.getElementById(`${switchId}-range-value`).innerText = blur;
 
         chromeScripting()
     })

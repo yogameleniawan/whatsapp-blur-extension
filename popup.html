@@ -8,14 +8,16 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/slider.css">
     <script src="js/popup.js"></script>
 </head>
 
 <body style="width: 315px;">
     <div class="container">
         <div id="status"></div>
+        <hr>
         <div id="content" class="d-flex flex-column gap-3">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-header">
                     Chat Lists
                 </div>
@@ -24,10 +26,11 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="text-chat">
                             <label class="form-check-label" for="text-chat">Message Preview</label>
-                            <div id="text-chat-blur" class="flex-row" style="display: none;">
+                            <div id="text-chat-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="text-chat-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="text-chat-range-value">5</label>
                             </div>
                         </div>
                     </li>
@@ -35,10 +38,11 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="contact-name">
                             <label class="form-check-label" for="contact-name">Group/Contact Name</label>
-                            <div id="contact-name-blur" class="flex-row" style="display: none;">
+                            <div id="contact-name-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="contact-name-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="contact-name-range-value">5</label>
                             </div>
                         </div>
                     </li>
@@ -46,16 +50,17 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="profile-picture">
                             <label class="form-check-label" for="profile-picture">Profile Picture</label>
-                            <div id="profile-picture-blur" class="flex-row" style="display: none;">
+                            <div id="profile-picture-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="profile-picture-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="profile-picture-range-value">5</label>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-header">
                     Chat Options
                 </div>
@@ -64,10 +69,11 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="text-message">
                             <label class="form-check-label" for="text-message">Text Message</label>
-                            <div id="text-message-blur" class="flex-row" style="display: none;">
+                            <div id="text-message-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="text-message-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="text-message-range-value">5</label>
                             </div>
                         </div>
                     </li>
@@ -75,10 +81,11 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="image-message">
                             <label class="form-check-label" for="image-message">Image</label>
-                            <div id="image-message-blur" class="flex-row" style="display: none;">
+                            <div id="image-message-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="image-message-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="image-message-range-value">5</label>
                             </div>
                         </div>
                     </li>
@@ -86,15 +93,26 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="document-message">
                             <label class="form-check-label" for="document-message">Document</label>
-                            <div id="document-message-blur" class="flex-row" style="display: none;">
+                            <div id="document-message-blur" class="flex-row gap-2" style="display: none;">
                                 <label style="margin-right: 5px;">Blur</label>
                                 <input type="range" name="range" id="document-message-range" min="0" max="10" step="0"
                                     value="5" />
+                                <label id="document-message-range-value">5</label>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-column gap-2 justify-content-center mb-2" style="align-items: center;">
+            <div class="d-flex flex-row gap-2">
+                <a href="https://github.com/yogameleniawan/whatsapp-blur-extension/issues" target="_blank">Report
+                    Bug</a>
+                <a href="https://github.com/yogameleniawan" target="_blank">Author</a>
+                <a href="https://github.com/yogameleniawan/whatsapp-blur-extension">Release Notes</a>
+            </div>
+            <small>v1.0</small>
         </div>
     </div>
 </body>
