@@ -6,28 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/popup.js"></script>
 </head>
 
-<body>
+<body style="width: 315px;">
     <div class="container">
         <div id="status"></div>
-        <div id="content">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="text-chat">
-                <label class="form-check-label" for="text-chat">Text Chat</label>
+        <div id="content" class="d-flex flex-column gap-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Chat Lists
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="text-chat">
+                            <label class="form-check-label" for="text-chat">Message Preview</label>
+                            <div id="text-chat-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="text-chat-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="contact-name">
+                            <label class="form-check-label" for="contact-name">Group/Contact Name</label>
+                            <div id="contact-name-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="contact-name-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="profile-picture">
+                            <label class="form-check-label" for="profile-picture">Profile Picture</label>
+                            <div id="profile-picture-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="profile-picture-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="contact-name">
-                <label class="form-check-label" for="contact-name">Contact Name</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="profile-picture">
-                <label class="form-check-label" for="profile-picture">Profile Picture</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="text-message">
-                <label class="form-check-label" for="text-message">Text Message</label>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Chat Options
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="text-message">
+                            <label class="form-check-label" for="text-message">Text Message</label>
+                            <div id="text-message-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="text-message-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="image-message">
+                            <label class="form-check-label" for="image-message">Image</label>
+                            <div id="image-message-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="image-message-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="document-message">
+                            <label class="form-check-label" for="document-message">Document</label>
+                            <div id="document-message-blur" class="flex-row" style="display: none;">
+                                <label style="margin-right: 5px;">Blur</label>
+                                <input type="range" name="range" id="document-message-range" min="0" max="10" step="0"
+                                    value="5" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
