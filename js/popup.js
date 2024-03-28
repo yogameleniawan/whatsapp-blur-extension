@@ -15,6 +15,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tab.url.startsWith("https://web.whatsapp.com/")) {
         document.getElementById("status").innerText = "Whatsapp Blur Privacy";
     } else {
+        document.getElementById("icon").src = ""
         document.getElementById("status").innerHTML = `
         <div class="alert alert-danger d-flex align-items-center" style="margin-top:10px"> 
             <svg width="24" height="24" 
