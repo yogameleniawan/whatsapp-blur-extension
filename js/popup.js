@@ -7,6 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
     handleBlur("text-message", "._akbu", "textMessage")
 });
 
+
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var tab = tabs[0];
+    if (tab.url.startsWith("https://web.whatsapp.com/")) {
+        document.getElementById("status").innerText = "Extension Active";
+    } else {
+        document.getElementById("status").innerText = "Tab is not Whatsapp. Extension disabled.";
+        document.getElementById("content").innerHTML = "";
+    }
+});
+
 function initializeStorage() {
     var toggle_text = document.getElementById("text-chat");
     var contact_name = document.getElementById("contact-name");
