@@ -29,7 +29,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                         0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> 
             </svg> 
             <div> 
-                Extension Disabled. Make sure active tab is https://web.whatsapp.com/
+                Extension Disabled. Make sure active tab is <a href="https://web.whatsapp.com/" target="_blank">https://web.whatsapp.com/</a>
             </div> 
         </div>
         `;
